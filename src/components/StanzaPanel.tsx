@@ -19,9 +19,68 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
+function AtlasList({
+  label,
+  marker,
+  items,
+}: {
+  label: string;
+  marker: string;
+  items: string[];
+}) {
+  return (
+    <div className="space-y-1.5">
+      <div className="font-body text-[0.55rem] uppercase tracking-[0.24em] text-glow/70">
+        {label}
+      </div>
+      <ul className="space-y-1">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="font-body text-[0.74rem] leading-snug text-cream/75"
+          >
+            <span className="mr-1.5 text-glow/60">{marker}</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function LiteraryAtlas({ stanza }: { stanza: Stanza }) {
+  const { atlas } = stanza;
+  return (
+    <aside className="space-y-5 border-cream/10 md:border-r md:pr-7">
+      <div className="font-body text-[0.58rem] uppercase tracking-[0.28em] text-cream/60">
+        Literary Atlas
+      </div>
+      <AtlasList label="Main themes" marker="▸" items={atlas.themes} />
+      <AtlasList label="Key symbols" marker="◉" items={atlas.symbols} />
+      <AtlasList label="Key devices" marker="✦" items={atlas.devices} />
+      <div className="space-y-1">
+        <div className="font-body text-[0.55rem] uppercase tracking-[0.24em] text-glow/70">
+          Authorial purpose
+        </div>
+        <p className="font-body text-[0.74rem] leading-relaxed text-cream/75">
+          {atlas.purpose}
+        </p>
+      </div>
+      <div className="space-y-1">
+        <div className="font-body text-[0.55rem] uppercase tracking-[0.24em] text-glow/70">
+          Big idea
+        </div>
+        <p className="font-display text-[0.86rem] italic leading-relaxed text-cream/85">
+          {atlas.bigIdea}
+        </p>
+      </div>
+    </aside>
+  );
+}
+
 function WordPopover({ note, onClose }: { note: WordNote; onClose: () => void }) {
   return (
-    <div className="glass-panel absolute left-1/2 top-full z-30 mt-3 w-[min(20rem,70vw)] -translate-x-1/2 animate-scale-in space-y-3 rounded-2xl p-5 text-left">
+    <div className="glass-panel absolute left-1/2 top-full z-30 mt-3 max-h-[22rem] w-[min(22rem,72vw)] -translate-x-1/2 animate-scale-in space-y-3 overflow-y-auto rounded-2xl p-5 text-left">
       <div className="flex items-baseline justify-between gap-3">
         <span className="font-display text-lg italic text-glow">{note.word}</span>
         <button
@@ -31,12 +90,22 @@ function WordPopover({ note, onClose }: { note: WordNote; onClose: () => void })
           close
         </button>
       </div>
+      <Row label="Definition" value={note.definition} />
       <Row label="Theme" value={note.theme} />
       <Row label="Symbolism" value={note.symbolism} />
       <Row label="Literary device" value={note.device} />
       <Row label="Authorial choice" value={note.choice} />
       <Row label="Reader effect" value={note.effect} />
       <Row label="IB interpretation" value={note.ib} />
+      <div className="space-y-1">
+        <div className="font-body text-[0.6rem] uppercase tracking-[0.22em] text-glow/70">
+          Quotation
+        </div>
+        <p className="font-display text-[0.86rem] italic leading-relaxed text-cream/85">
+          “{note.quotation}”
+        </p>
+      </div>
+      <Row label="Central argument" value={note.connection} />
     </div>
   );
 }
@@ -93,7 +162,7 @@ export function StanzaPanel({
         onClick={onClose}
         aria-hidden
       />
-      <div className="glass-panel relative max-h-[86vh] w-[min(56rem,100%)] animate-scale-in overflow-y-auto rounded-[2rem] p-7 sm:p-10">
+      <div className="glass-panel relative max-h-[86vh] w-[min(64rem,100%)] animate-scale-in overflow-y-auto rounded-[2rem] p-7 sm:p-10">
         <button
           onClick={onClose}
           className="absolute right-6 top-6 font-body text-[0.62rem] uppercase tracking-[0.28em] text-cream/50 transition-colors hover:text-cream"
@@ -105,7 +174,9 @@ export function StanzaPanel({
           Stanza {stanza.id} — {stanza.label}
         </div>
 
-        <div className="mt-6 grid gap-10 md:grid-cols-[1.05fr_1fr]">
+        <div className="mt-6 grid gap-10 md:grid-cols-[0.62fr_1fr_1fr]">
+          <LiteraryAtlas stanza={stanza} />
+
           <div className="font-display text-[1.12rem] leading-[2.1] tracking-wide text-cream">
             {stanza.text.split("\n").map((line, i) => (
               <PoemLine
