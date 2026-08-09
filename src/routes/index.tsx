@@ -113,6 +113,7 @@ function Birches() {
           >
 
 
+
             <span className="firefly-drift absolute inset-0 flex items-center justify-center">
               <span className="firefly-core absolute h-9 w-9 rounded-full bg-glow/25 blur-lg transition-all duration-500 group-hover:h-14 group-hover:w-14 group-hover:bg-glow/45" />
               <span className="relative h-[7px] w-[7px] rounded-full bg-cream shadow-[0_0_16px_6px_rgba(255,214,140,0.65)] transition-transform duration-500 group-hover:scale-150" />
