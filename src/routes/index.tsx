@@ -137,9 +137,8 @@ function Birches() {
       {activeItem && isInfoPanel(activeItem) && (
         <InfoPanel panel={activeItem} onClose={() => setActive(null)} />
       )}
-
-
     </main>
   );
 }
+
 
