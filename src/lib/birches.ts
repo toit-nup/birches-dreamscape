@@ -561,5 +561,3 @@ export const wordNotes: WordNote[] = [
   },
 ];
 
-export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
-
