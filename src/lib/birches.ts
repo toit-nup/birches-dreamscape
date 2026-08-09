@@ -560,3 +560,6 @@ export const wordNotes: WordNote[] = [
       "This is the poem's verdict: imagination may lift us, but love happens only on the ground.",
   },
 ];
+
+export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
+
