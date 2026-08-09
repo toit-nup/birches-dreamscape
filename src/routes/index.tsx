@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import bg from "@/assets/birches-bg.png.asset.json";
-import { stanzas } from "@/lib/birches";
+import { fireflyItems, isInfoPanel, isStanza } from "@/lib/birches";
+import { InfoPanel } from "@/components/InfoPanel";
 import { StanzaPanel } from "@/components/StanzaPanel";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
