@@ -36,6 +36,34 @@ export type Stanza = {
   atlas: Atlas;
 };
 
+export type InfoSection = {
+  heading: string;
+  content: string;
+};
+
+export type InfoPanel = {
+  id: string;
+  label: string;
+  /** position of the firefly, in % of viewport */
+  x: number;
+  y: number;
+  title: string;
+  subtitle: string;
+  sections: InfoSection[];
+  atlas: Atlas;
+};
+
+export type FireflyItem = Stanza | InfoPanel;
+
+export function isStanza(item: FireflyItem): item is Stanza {
+  return typeof (item as Stanza).id === "number";
+}
+
+export function isInfoPanel(item: FireflyItem): item is InfoPanel {
+  return typeof (item as InfoPanel).id === "string";
+}
+
+
 export const stanzas: Stanza[] = [
   {
     id: 1,
