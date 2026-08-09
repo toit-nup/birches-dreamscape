@@ -39,12 +39,7 @@ const particles = Array.from({ length: 26 }, (_, i) => ({
 function Birches() {
   const [active, setActive] = useState<number | string | null>(null);
   const [hint, setHint] = useState(true);
-  const [clickCount, setClickCount] = useState(0);
   const sceneRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    console.log("ACTIVE CHANGED:", active, "clickCount:", clickCount);
-  }, [active, clickCount]);
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -60,6 +55,7 @@ function Birches() {
       clearTimeout(t);
     };
   }, []);
+
 
 
   const activeItem = fireflyItems.find((item) => item.id === active) ?? null;
