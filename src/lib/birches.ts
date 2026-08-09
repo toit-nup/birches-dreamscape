@@ -36,6 +36,34 @@ export type Stanza = {
   atlas: Atlas;
 };
 
+export type InfoSection = {
+  heading: string;
+  content: string;
+};
+
+export type InfoPanel = {
+  id: string;
+  label: string;
+  /** position of the firefly, in % of viewport */
+  x: number;
+  y: number;
+  title: string;
+  subtitle: string;
+  sections: InfoSection[];
+  atlas: Atlas;
+};
+
+export type FireflyItem = Stanza | InfoPanel;
+
+export function isStanza(item: FireflyItem): item is Stanza {
+  return typeof (item as Stanza).id === "number";
+}
+
+export function isInfoPanel(item: FireflyItem): item is InfoPanel {
+  return typeof (item as InfoPanel).id === "string";
+}
+
+
 export const stanzas: Stanza[] = [
   {
     id: 1,
@@ -266,6 +294,91 @@ One could do worse than be a swinger of birches.`,
   },
 ];
 
+export const infoPanels: InfoPanel[] = [
+
+  {
+    id: "context",
+    label: "Context",
+    x: 15,
+    y: 80,
+    title: "Historical & Literary Context",
+    subtitle: "1915, New England — between tradition and modernity",
+    sections: [
+      {
+        heading: "Publication and moment",
+        content:
+          "Birches was first published in 1916 in Robert Frost's third collection, Mountain Interval, though it was written earlier and carried with him from England. The poem appears at a decisive moment in American poetry: Pound and Eliot were pushing modernism toward fragmentation, urban dislocation and allusive difficulty, while Frost returned to New England with a radically different conviction — that the local, the rural and the spoken could sustain modern consciousness. For an IB reader, this context matters because the poem is not a simple nature lyric; it is a quiet argument about where modern poetry should look for its subject matter.",
+      },
+      {
+        heading: "Biographical pressure",
+        content:
+          "Frost wrote Birches after years of failed farming, financial anxiety and the death of his firstborn son Elliott. His life had already taught him that rural innocence and darkness coexist. The poem's adult weariness, its fear of being 'snatched away / Not to return', and its final acceptance of earth all carry the weight of a poet who has suffered rather than merely observed. The context of loss gives the closing line 'Earth's the right place for love' its defensive, almost wounded tenderness.",
+      },
+      {
+        heading: "Literary context",
+        content:
+          "The poem inherits the Romantic tradition of Wordsworth and Keats — nature as a site of spiritual instruction — but it revises that tradition through realism. Frost refuses metaphysical consolation; his nature is beautiful and indifferent, his heaven only approached, never possessed. The poem is therefore both post-Romantic and proto-modernist: it keeps traditional form, especially blank verse, but uses it to dramatise a mind in motion rather than a fixed moral lesson.",
+      },
+      {
+        heading: "Reception and significance",
+        content:
+          "Birches has become one of Frost's most anthologised poems precisely because it appears accessible while remaining analytically rich. Its public popularity sometimes obscures its complexity, but the poem rewards close attention to its syntax, tonal shifts and structural returns. It is a poem about the desire to escape and the discipline of coming back, written by a poet whose entire career was a negotiation between fame and solitude, statement and silence.",
+      },
+    ],
+    atlas: {
+      themes: ["Pastoral and Modernity", "Regional Identity", "Loss and Acceptance"],
+      symbols: ["New England Landscape", "Farm and Woodland", "The Birch Tree"],
+      devices: ["Blank Verse", "Dramatic Monologue", "Conversational Diction"],
+      purpose:
+        "To locate a modern meditation on imagination and reality within a specific regional landscape, so that the personal becomes representative and the local becomes universal.",
+      bigIdea:
+        "Frost makes the New England scene carry universal questions about escape, return and the place of love in a mortal world.",
+    },
+  },
+  {
+    id: "author",
+    label: "Robert Frost",
+    x: 82,
+    y: 25,
+    title: "Robert Frost",
+    subtitle: "1874–1963, four-time Pulitzer Prize winner",
+    sections: [
+      {
+        heading: "Life and formation",
+        content:
+          "Robert Frost was born in San Francisco in 1874 and moved to New England after his father's death. His adult life was marked by farming failures, teaching and the repeated experience of family loss, including the deaths of several children and his wife Elinor. These biographical facts are not decorative background; they inform the undertone of grief that runs beneath the calm surfaces of his best poems. By the time of Birches, Frost had established the voice that would make him the most celebrated American poet of his generation: plain speech, traditional metre and psychological depth concealed under pastoral detail.",
+      },
+      {
+        heading: "The sound of sense",
+        content:
+          "Frost's theory of the 'sound of sense' is crucial to any analysis of his work. He believed that sentences should carry the natural rhythm of spoken English while maintaining metrical discipline. In Birches this produces the effect of overhearing a neighbour think aloud: the syntax is loose, self-correcting and conversational, but the underlying iambic pentameter keeps the meditation anchored. This dual register — common speech and formal control — is Frost's signature authorial achievement.",
+      },
+      {
+        heading: "Recurring concerns",
+        content:
+          "Frost's poetry returns again and again to thresholds, boundaries and choices: walls, paths, forks, woods at night, doors left open or closed. He is interested in what happens at the edge of things, where one condition becomes another. Birches belongs to this pattern: the birch tree is a threshold between earth and sky, and the poem asks whether crossing it can be temporary rather than final. His work is therefore less about nature than about the human mind using nature to think.",
+      },
+      {
+        heading: "Reputation and misreading",
+        content:
+          "Frost won four Pulitzer Prizes and read at the inauguration of John F. Kennedy in 1961, which cemented his reputation as a public, patriotic poet. Yet this popularity has led to frequent misreading; his poems are often treated as simple celebrations of rural America. A strong IB response recognises that Frost is fundamentally ambiguous. Poems like The Road Not Taken and Stopping by Woods on a Snowy Evening share Birches' method: a deceptively simple scene that opens into unresolved moral and psychological complexity. Frost is a poet of darkness made bearable by form.",
+      },
+    ],
+    atlas: {
+      themes: ["Nature and Human Limitation", "Isolation and Community", "Choice and Mortality"],
+      symbols: ["Woods and Paths", "Walls and Boundaries", "Trees and Farms"],
+      devices: ["Sound of Sense", "Dramatic Monologue", "Ambiguity", "Blank Verse"],
+      purpose:
+        "To use observed rural life as a stage for moral and psychological inquiry, demonstrating that ordinary language can carry uncommon philosophical weight.",
+      bigIdea:
+        "Frost's plain style is a precision instrument: it makes the familiar strange and the strange familiar, allowing a regional voice to speak about universal limits.",
+    },
+  },
+];
+
+export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
+
+
 export const wordNotes: WordNote[] = [
   {
     word: "birches",
@@ -447,3 +560,4 @@ export const wordNotes: WordNote[] = [
       "This is the poem's verdict: imagination may lift us, but love happens only on the ground.",
   },
 ];
+
