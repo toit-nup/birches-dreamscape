@@ -104,8 +104,6 @@ function Birches() {
           <button
             key={item.id}
             onClick={() => {
-              console.log("BUTTON CLICKED", item.id);
-              setClickCount((c) => c + 1);
               setActive(item.id);
               setHint(false);
             }}
@@ -113,6 +111,7 @@ function Birches() {
             className="group absolute z-10 h-12 w-12 -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
           >
+
 
             <span className="firefly-drift absolute inset-0 flex items-center justify-center">
               <span className="firefly-core absolute h-9 w-9 rounded-full bg-glow/25 blur-lg transition-all duration-500 group-hover:h-14 group-hover:w-14 group-hover:bg-glow/45" />
