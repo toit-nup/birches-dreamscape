@@ -292,7 +292,10 @@ One could do worse than be a swinger of birches.`,
         "Imagination restores us, but life must ultimately be lived on earth — the poem's wish and its limit, spoken in one breath.",
     },
   },
+];
+
 export const infoPanels: InfoPanel[] = [
+
   {
     id: "context",
     label: "Context",
