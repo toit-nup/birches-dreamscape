@@ -130,16 +130,13 @@ function Birches() {
         </p>
       )}
 
-      <div className="pointer-events-none fixed left-2 top-2 z-50 text-xs text-red-500">
-        active: {JSON.stringify(active)} | item: {JSON.stringify(activeItem ? activeItem.id : null)}
-      </div>
-
       {activeItem && isStanza(activeItem) && (
         <StanzaPanel stanza={activeItem} onClose={() => setActive(null)} />
       )}
       {activeItem && isInfoPanel(activeItem) && (
         <InfoPanel panel={activeItem} onClose={() => setActive(null)} />
       )}
+
 
     </main>
   );
