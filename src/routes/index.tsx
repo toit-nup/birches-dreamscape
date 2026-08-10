@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import bg from "@/assets/birches-bg.png.asset.json";
+
 import { fireflyItems, isInfoPanel, isStanza } from "@/lib/birches";
 import { InfoPanel } from "@/components/InfoPanel";
 import { StanzaPanel } from "@/components/StanzaPanel";
@@ -66,7 +66,7 @@ function Birches() {
       >
         <div
           className="scene-sway absolute -inset-8 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bg.url})` }}
+          style={{ backgroundImage: "url('/ChatGPT Image Aug 6, 2026, 01_09_07 AM.png')" }}
           role="img"
           aria-label="A child on a rope swing beneath a birch tree, overlooking a valley at sunset"
         />
