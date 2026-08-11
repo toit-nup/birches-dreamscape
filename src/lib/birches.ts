@@ -54,14 +54,29 @@ export type InfoPanel = {
   atlas: Atlas;
 };
 
-export type FireflyItem = Stanza | InfoPanel;
+export type ExternalFirefly = {
+  id: string;
+  label: string;
+  /** position of the firefly, in % of viewport */
+  x: number;
+  y: number;
+  url: string;
+  /** opens in a new tab instead of a panel */
+  isExternal: true;
+};
+
+export type FireflyItem = Stanza | InfoPanel | ExternalFirefly;
 
 export function isStanza(item: FireflyItem): item is Stanza {
   return typeof (item as Stanza).id === "number";
 }
 
 export function isInfoPanel(item: FireflyItem): item is InfoPanel {
-  return typeof (item as InfoPanel).id === "string";
+  return typeof (item as InfoPanel).id === "string" && !isExternalFirefly(item);
+}
+
+export function isExternalFirefly(item: FireflyItem): item is ExternalFirefly {
+  return (item as ExternalFirefly).isExternal === true;
 }
 
 
