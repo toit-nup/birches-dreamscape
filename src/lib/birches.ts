@@ -375,39 +375,6 @@ export const infoPanels: InfoPanel[] = [
         "Frost's plain style is a precision instrument: it makes the familiar strange and the strange familiar, allowing a regional voice to speak about universal limits.",
     },
   },
-  {
-    id: "form",
-    label: "Feedback",
-    x: 83,
-    y: 74,
-    title: "Share your response",
-    subtitle: "A quick reflection on Birches and the interactive reading",
-    sections: [
-      {
-        heading: "Why your response matters",
-        content:
-          "This form is a chance to capture what stayed with you after moving through the poem — a line, an image, or an idea. Your reflections help shape how this reading is shared with other IB students and readers, and they become part of the ongoing conversation around the poem.",
-      },
-      {
-        heading: "What to include",
-        content:
-          "You might comment on the tension between escape and return, the role of childhood memory, or Frost's use of plain speech to carry philosophical weight. There are no required answers; the most useful responses are specific, personal and grounded in the text.",
-      },
-    ],
-    atlas: {
-      themes: ["Reader Response", "Reflection", "Collaboration"],
-      symbols: ["The Open Form", "The Reader's Voice"],
-      devices: ["Interactive Annotation", "Personal Reflection"],
-      purpose:
-        "To extend the reading experience beyond the poem itself, inviting the audience to become a participant rather than a passive viewer.",
-      bigIdea:
-        "A poem is not finished when it is written; it is finished when a reader meets it and answers back.",
-    },
-    link: {
-      url: "https://docs.google.com/forms/d/e/1FAIpQLSeg5q-ceTw89A6gGP8VWrchNn0tPNP9qzhjNE_cRKuu3xkB6g/viewform?usp=publish",
-      label: "Open the Google Form",
-    },
-  },
 ];
 
 export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
