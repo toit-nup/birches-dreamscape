@@ -54,14 +54,29 @@ export type InfoPanel = {
   atlas: Atlas;
 };
 
-export type FireflyItem = Stanza | InfoPanel;
+export type ExternalFirefly = {
+  id: string;
+  label: string;
+  /** position of the firefly, in % of viewport */
+  x: number;
+  y: number;
+  url: string;
+  /** opens in a new tab instead of a panel */
+  isExternal: true;
+};
+
+export type FireflyItem = Stanza | InfoPanel | ExternalFirefly;
 
 export function isStanza(item: FireflyItem): item is Stanza {
   return typeof (item as Stanza).id === "number";
 }
 
 export function isInfoPanel(item: FireflyItem): item is InfoPanel {
-  return typeof (item as InfoPanel).id === "string";
+  return typeof (item as InfoPanel).id === "string" && !isExternalFirefly(item);
+}
+
+export function isExternalFirefly(item: FireflyItem): item is ExternalFirefly {
+  return (item as ExternalFirefly).isExternal === true;
 }
 
 
@@ -377,7 +392,22 @@ export const infoPanels: InfoPanel[] = [
   },
 ];
 
-export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
+export const externalFireflies: ExternalFirefly[] = [
+  {
+    id: "form",
+    label: "Feedback",
+    x: 83,
+    y: 74,
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSeg5q-ceTw89A6gGP8VWrchNn0tPNP9qzhjNE_cRKuu3xkB6g/viewform?usp=publish",
+    isExternal: true,
+  },
+];
+
+export const fireflyItems: FireflyItem[] = [
+  ...stanzas,
+  ...infoPanels,
+  ...externalFireflies,
+];
 
 
 export const wordNotes: WordNote[] = [
