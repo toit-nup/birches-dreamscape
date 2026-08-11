@@ -392,7 +392,22 @@ export const infoPanels: InfoPanel[] = [
   },
 ];
 
-export const fireflyItems: FireflyItem[] = [...stanzas, ...infoPanels];
+export const externalFireflies: ExternalFirefly[] = [
+  {
+    id: "form",
+    label: "Feedback",
+    x: 83,
+    y: 74,
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSeg5q-ceTw89A6gGP8VWrchNn0tPNP9qzhjNE_cRKuu3xkB6g/viewform?usp=publish",
+    isExternal: true,
+  },
+];
+
+export const fireflyItems: FireflyItem[] = [
+  ...stanzas,
+  ...infoPanels,
+  ...externalFireflies,
+];
 
 
 export const wordNotes: WordNote[] = [
