@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
-import { fireflyItems, isInfoPanel, isStanza } from "@/lib/birches";
+import { fireflyItems, isExternalFirefly, isInfoPanel, isStanza } from "@/lib/birches";
 import { InfoPanel } from "@/components/InfoPanel";
 import { StanzaPanel } from "@/components/StanzaPanel";
 
