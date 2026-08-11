@@ -113,16 +113,6 @@ export function InfoPanel({
                 value={section.content}
               />
             ))}
-            {panel.link && (
-              <a
-                href={panel.link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-full border border-glow/50 bg-glow/10 px-6 py-3 font-body text-[0.75rem] uppercase tracking-[0.2em] text-cream/90 transition-colors hover:bg-glow/20 hover:text-cream"
-              >
-                {panel.link.label} →
-              </a>
-            )}
           </div>
         </div>
       </div>

@@ -41,10 +41,6 @@ export type InfoSection = {
   content: string;
 };
 
-export type InfoLink = {
-  url: string;
-  label: string;
-};
 
 export type InfoPanel = {
   id: string;
@@ -56,7 +52,6 @@ export type InfoPanel = {
   subtitle: string;
   sections: InfoSection[];
   atlas: Atlas;
-  link?: InfoLink;
 };
 
 export type FireflyItem = Stanza | InfoPanel;
